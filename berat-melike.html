@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Berat ❤️ Melike</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  
+  <style>
+    body, html {
+      margin: 0; padding: 0; height: 100%;
+      background-color: #ffd6e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+    #content {
+      display: none;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      color: #333;
+      z-index: 10;
+    }
+    h1 {
+      font-size: 3.5em;
+      margin-top: 30px;
+      color: #b30059;
+      position: relative;
+      z-index: 10;
+    }
+    .message {
+      margin: 15px auto;
+      font-size: 1.3em;
+      max-width: 600px;
+      position: relative;
+      z-index: 10;
+    }
+    .heart-container {
+      position: relative;
+      width: 400px;
+      margin: 40px auto;
+      z-index: 10;
+    }
+    svg.heart {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 5px #ff66aa);
+    }
+    .counter-text {
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 1.8em;
+      font-weight: 700;
+      font-family: 'Orbitron', monospace;
+      width: 90%;
+      user-select: none;
+      text-shadow: 0 0 6px #ff3366;
+      z-index: 10;
+    }
+    .photo-placeholder {
+      margin-top: 20px;
+      font-style: italic;
+      color: #777;
+      position: relative;
+      z-index: 10;
+    }
+    iframe {
+      margin-top: 30px;
+      border: none;
+      position: relative;
+      z-index: 10;
+    }
+    /* Kitty yüzleri */
+    .kitty-face {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      opacity: 0.4;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.15));
+      z-index: 1;
+      transition: left 0.5s ease, top 0.5s ease;
+    }
+
+    /* Şifre kutusu */
+    #password-container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffd6e0;
+      flex-direction: column;
+      padding: 20px;
+    }
+    #password-input {
+      font-size: 1.5em;
+      padding: 10px;
+      border: 2px solid #b30059;
+      border-radius: 8px;
+      outline: none;
+      width: 250px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    #password-submit {
+      font-size: 1.2em;
+      padding: 10px 25px;
+      background-color: #b30059;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    #password-submit:hover {
+      background-color: #ff3366;
+    }
+    #password-error {
+      color: red;
+      font-weight: 600;
+      margin-top: 10px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="password-container">
+    <input type="password" id="password-input" placeholder="Şifreyi gir (gggg.aa.yyyy)" />
+    <button id="password-submit">Giriş</button>
+    <div id="password-error"></div>
+  </div>
+
+  <div id="content">
+    <h1>Berat ❤️ Melike</h1>
+
+    <div class="message">
+      Göz göze geldiğimiz ilk anı hatırlıyorum da…<br />
+      O an başladı her şey. Ve hâlâ her saniye seninle daha güzel.<br />
+      İyi ki varsın yavrum 💖
+    </div>
+
+    <div class="heart-container">
+      <svg class="heart" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <path d="M10,30
+                 A20,20 0 0,1 50,30
+                 A20,20 0 0,1 90,30
+                 Q90,60 50,85
+                 Q10,60 10,30 Z"
+              fill="#ff4d88" />
+      </svg>
+      <div class="counter-text" id="love-counter">Yükleniyor...</div>
+    </div>
+
+    <div class="photo-placeholder">📸 Fotoğrafını buraya ekleyebilirsin.</div>
+
+    <iframe
+      width="0"
+      height="0"
+      src="https://www.youtube.com/embed/7iY-5sjzTzk?autoplay=1&loop=1&playlist=7iY-5sjzTzk"
+      allow="autoplay"
+    ></iframe>
+
+    <!-- Kitty yüzleri (40 adet) -->
+    <svg style="display:none;">
+      <symbol id="kitty-face-symbol" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="30" fill="#fff0f6" stroke="#ff1493" stroke-width="3"/>
+        <polygon points="10,15 20,0 25,20" fill="#ff69b4" />
+        <polygon points="54,15 44,0 39,20" fill="#ff69b4" />
+        <circle cx="22" cy="30" r="5" fill="#000"/>
+        <circle cx="42" cy="30" r="5" fill="#000"/>
+        <circle cx="32" cy="40" r="4" fill="#ff1493"/>
+        <line x1="15" y1="38" x2="27" y2="38" stroke="#ff1493" stroke-width="3" />
+        <line x1="37" y1="38" x2="49" y2="38" stroke="#ff1493" stroke-width="3" />
+        <circle cx="32" cy="15" r="10" fill="#ff1493" />
+        <circle cx="28" cy="15" r="6" fill="#ff69b4" />
+        <circle cx="36" cy="15" r="6" fill="#ff69b4" />
+      </symbol>
+    </svg>
+
+    <div id="kitty-container"></div>
+  </div>
+
+  <script>
+    const PASSWORD = "01.04.2025";
+
+    const passwordContainer = document.getElementById('password-container');
+    const content = document.getElementById('content');
+    const input = document.getElementById('password-input');
+    const submitBtn = document.getElementById('password-submit');
+    const errorMsg = document.getElementById('password-error');
+    const kittyContainer = document.getElementById('kitty-container');
+
+    submitBtn.addEventListener('click', checkPassword);
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') checkPassword();
+    });
+
+    function checkPassword() {
+      if (input.value.trim() === PASSWORD) {
+        passwordContainer.style.display = 'none';
+        content.style.display = 'flex';
+        initKittyFaces();
+        updateCounter();
+        placeKittyFaces();
+      } else {
+        errorMsg.textContent = "Yanlış şifre, tekrar deneyin.";
+        input.value = "";
+        input.focus();
+      }
+    }
+
+    const startDate = new Date("2025-04-01T00:00:00");
+    const counter = document.getElementById("love-counter");
+
+    function updateCounter() {
+      const now = new Date();
+      let diff = now - startDate;
+
+      const totalMonths =
+        (now.getFullYear() - startDate.getFullYear()) * 12 +
+        (now.getMonth() - startDate.getMonth());
+      const years = Math.floor(totalMonths / 12);
+      const months = totalMonths % 12;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = now.getHours().toString().padStart(2, "0");
+      const minutes = now.getMinutes().toString().padStart(2, "0");
+      const seconds = now.getSeconds().toString().padStart(2, "0");
+
+      counter.textContent = `${years} yıl ${months} ay ${days} gün ${hours}:${minutes}:${seconds}`;
+    }
+
+    setInterval(() => {
+      if (content.style.display === 'flex') updateCounter();
+    }, 1000);
+
+    // Kitty yüzlerini oluşturup container içine ekle
+    function initKittyFaces() {
+      kittyContainer.innerHTML = '';
+      for(let i=0; i<40; i++) {
+        const svgElem = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svgElem.setAttribute("class", "kitty-face");
+        svgElem.setAttribute("viewBox", "0 0 64 64");
+        svgElem.innerHTML = `<use href="#kitty-face-symbol" />`;
+        kittyContainer.appendChild(svgElem);
+      }
+    }
+
+    // Kitty yüzlerini rastgele yerleştir
+    function placeKittyFaces() {
+      const kittyFaces = document.querySelectorAll(".kitty-face");
+      const bodyWidth = window.innerWidth;
+      const bodyHeight = window.innerHeight;
+
+      kittyFaces.forEach((face) => {
+        const x = Math.random() * (bodyWidth - 80) + 10;
+        const y = Math.random() * (bodyHeight - 80) + 10;
+        face.style.left = x + "px";
+        face.style.top = y + "px";
+      });
+    }
+
+    window.addEventListener("resize", () => {
+      if (content.style.display === 'flex') placeKittyFaces();
+    });
+  </script>
+</body>
+</html>
